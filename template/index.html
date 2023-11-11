@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: grid;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+select {
+    width: 100%;
+    padding: 6px;
+    box-sizing: border-box;
+    font-size: 16px; /* Set the desired font size */
+}
+    </style>
+    <title>Brain Stroke Prediction</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Brain Stroke Prediction</h1>
+        <form action="{{ url_for('predict')}}" method="post" >
+            <h1>Brain Stroke Prediction</h1>
+            <label for="gender">Gender:</label>
+            <select name="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+            <label for="age">Age:</label>
+            <input type="number" name="age" required>
+
+            <label for="hypertension">Hypertension:</label>
+            <select name="hypertension" required>
+                <option value="Yes" name="hypertension">Yes</option>
+                <option value="No" name="hypertension">No</option>
+            </select>
+
+            <label for="heart_disease">Heart Disease:</label>
+            <select name="heart_disease" required>
+                <option value="Yes" name="heart_disease">Yes</option>
+                <option value="No" name="heart_disease">No</option>
+            </select>
+            
+            <label for="ever_married">Ever Married:</label>
+            <select name="ever_married" required>
+                <option value="Yes" name="ever_married">Yes</option>
+                <option value="No" name="ever_married">No</option>
+            </select>
+
+            <label for="work_type">Work Type:</label>
+            <select name="work_type" required>
+                <option value="Private">Private</option>
+                <option value="Self_employed">Self-employed</option>
+                <option value="Govt_job">Govt_job</option>
+                <option value="children">children</option>
+            </select>
+
+            <label for="residence_type">Residence Type:</label>
+            <select name="residence_type" required>
+                <option value="Urban">Urban</option>
+                <option value="Rural">Rural</option>
+            </select>
+
+            <label for="avg_glucose_level">Avg Glucose Level:</label>
+            <input type="number" name="avg_glucose_level" step="0.01" required="required">
+
+            <label for="bmi">BMI:</label>
+            <input type="number" name="bmi" step="0.01" required="required">
+
+            <label for="smoking_status">Smoking Status:</label>
+            <select name="smoking_status" required>
+                <option value="formerly_smoked">formerly smoked</option>
+                <option value="never_smoked">never smoked</option>
+                <option value="smokes">smokes</option>
+                <option value="Unknown">Unknown</option>
+            </select>
+
+
+            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        </form>
+        <br>
+        <br>
+        {{prediction_text}}
+    </div>
+</body>
+</html>
